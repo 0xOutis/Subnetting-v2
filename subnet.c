@@ -13,11 +13,11 @@ void line() {
 
 void error() {
 	puts("Options: ");
-	puts("\t#--classC");
+	puts("\t#--classC or -cC");
 	puts("\t\tPrefix: 24 - 30");
-	puts("\t#--classB");
+	puts("\t#--classB or -cB");
 	puts("\t\tPrefix: 16 - 23, 24 - 30");
-	puts("\t#--classA");
+	puts("\t#--classA or -cA");
 	puts("\t\tPrefix: 8 - 15, 16 - 23, 24 - 30");
 	puts("Examples:");
 	puts("IP address Class C: ./subnet 192.168.10.1/24 --classC");

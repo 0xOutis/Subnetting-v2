@@ -19,16 +19,16 @@ int main(int argc, char **argv) {
 	int y=0, x=0;
 
 	for (int i=0;i<strlen(address);i++) {
-		if ((address[i] != '.') && (address[i] != '/')) {
+		if ((address[i] != __DOT_) && (address[i] != __PREFIX_)) {
 			tmp[x] = address[i];
 			x++;
 		}
-		else if ((address[i] == '.') || (address[i] == '/')) {
+		else if ((address[i] == __DOT_) || (address[i] == __PREFIX_)) {
 			addr->octet[y] = atoi(tmp);
 			memset(tmp,0x00,sizeof(tmp));
 			x=0;
 			y++;
-			if (address[i] == '/') {
+			if (address[i] == __PREFIX_) {
 				for (int j=(i+0x01);j<=strlen(address);j++) {
 					tmp[x] = address[j];
 					x++;
@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
 		}
 	}
 
-	if (strcmp(argv[0x02], "--classC") == 0) {
+	if ((strcmp(argv[0x02], LONG_ARG_C) == 0) || (strcmp(argv[0x02], SHORT_ARG_C) == 0)){
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
 			prefix24(addr);
 		else {
@@ -49,7 +49,7 @@ int main(int argc, char **argv) {
 			free(addr);
 			return EXIT_FAILURE;
 		}
-	} else if (strcmp(argv[0x02], "--classB") == 0) {
+	} else if ((strcmp(argv[0x02], LONG_ARG_B) == 0) || (strcmp(argv[0x02], SHORT_ARG_B) == 0)){
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
 			prefix24(addr);
 		else if (addr->prefix <= 0x17 && addr->prefix >= 0x10)
@@ -61,7 +61,7 @@ int main(int argc, char **argv) {
 			return EXIT_FAILURE;
 		}
 		
-	} else if (strcmp(argv[0x02], "--classA") == 0) {
+	} else if ((strcmp(argv[0x02], LONG_ARG_A) == 0) || (strcmp(argv[0x02], SHORT_ARG_A) == 0)){
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
 			prefix24(addr);
 		else if (addr->prefix <= 0x17 && addr->prefix >= 0x10)
