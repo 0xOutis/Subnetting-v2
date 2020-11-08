@@ -25,7 +25,7 @@ void error() {
 	puts("IP address Class A: ./subnet 10.10.1.1/8 --classA");
 }
 
-void prefix24(ipaddr *ip) {
+void prefix24_30(ipaddr *ip) {
 	object obj;
 
 	obj.grade[0x00] = 0x20 - ip->prefix;
@@ -49,7 +49,7 @@ void prefix24(ipaddr *ip) {
 	line();
 }
 
-void prefix16(ipaddr *ip) {
+void prefix16_23(ipaddr *ip) {
 	object obj;
 
 	obj.grade[0x00] = 0x20 - ip->prefix;
@@ -75,7 +75,7 @@ void prefix16(ipaddr *ip) {
 	line();
 }
 
-void prefix8(ipaddr *ip) {
+void prefix8_15(ipaddr *ip) {
 	object obj;
 
 	obj.grade[0x00] = 0x20 - ip->prefix;
