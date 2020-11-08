@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -c
 CFLAGSS = -lm
 
-Subnet : main.o subnet.o
+subnet : main.o subnet.o
 	$(CC) main.o subnet.o -o subnet $(CFLAGSS)
 
 main.o : main.c
