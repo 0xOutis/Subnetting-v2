@@ -1,3 +1,9 @@
+/*
+ * Author  : Outis
+ * Release : Sunday,08-11-2020
+ * Tool    : Subnetting V2
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
