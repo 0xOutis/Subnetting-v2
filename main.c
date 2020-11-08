@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
 
 	if ((strcmp(argv[0x02], LONG_ARG_C) == 0) || (strcmp(argv[0x02], SHORT_ARG_C) == 0)){
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
-			prefix24(addr);
+			prefix24_30(addr);
 		else {
 			printf("Error, Example: %s [ip_addr]/[prefix] -[option]\n", argv[0x00]);
 			error();
@@ -51,9 +51,9 @@ int main(int argc, char **argv) {
 		}
 	} else if ((strcmp(argv[0x02], LONG_ARG_B) == 0) || (strcmp(argv[0x02], SHORT_ARG_B) == 0)){
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
-			prefix24(addr);
+			prefix24_30(addr);
 		else if (addr->prefix <= 0x17 && addr->prefix >= 0x10)
-			prefix16(addr);
+			prefix16_23(addr);
 		else {
 			printf("Error, Example: %s [ip_addr]/[prefix] -[option]\n", argv[0x00]);
 			error();
@@ -63,11 +63,11 @@ int main(int argc, char **argv) {
 		
 	} else if ((strcmp(argv[0x02], LONG_ARG_A) == 0) || (strcmp(argv[0x02], SHORT_ARG_A) == 0)){
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
-			prefix24(addr);
+			prefix24_30(addr);
 		else if (addr->prefix <= 0x17 && addr->prefix >= 0x10)
-			prefix16(addr);
+			prefix16_23(addr);
 		else if (addr->prefix <= 0x0f && addr->prefix >=0x08)
-			prefix8(addr);
+			prefix8_15(addr);
 		else {
 			printf("Error, Example: %s [ip_addr]/[prefix] -[option]\n", argv[0]);
 			error();
