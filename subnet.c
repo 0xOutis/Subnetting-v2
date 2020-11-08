@@ -4,8 +4,8 @@
 #include "subnet.h"
 
 int host;
-int network=0x00,broadcast=0x00;
-int numbers=0x01;
+int network=0,broadcast=0;
+int numbers=1;
 
 void line() {
 	puts("=============================================");
