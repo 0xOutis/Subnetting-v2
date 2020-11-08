@@ -79,7 +79,7 @@ void prefix8(ipaddr *ip) {
 	object obj;
 
 	obj.grade[0x00] = 0x20 - ip->prefix;
-	obj.grade[0x01] = 0x16 - ip->prefix;
+	obj.grade[0x01] = 0x10 - ip->prefix;
 	obj.subnet[0x00] = pow (2, obj.grade[0x00]);
 	obj.subnet[0x01] = pow (2, obj.grade[0x01]);
 	obj.mask = 0x100 - obj.subnet[0x01];
