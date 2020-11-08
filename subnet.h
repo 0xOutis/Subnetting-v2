@@ -26,8 +26,8 @@ typedef struct __obj {
 void line();
 void error();
 
-void prefix24(ipaddr *__IP_addrv4);
-void prefix16(ipaddr *__IP_addrv4);
-void prefix8(ipaddr *__IP_addrv4);
+void prefix24_30(ipaddr *__IP_addrv4);
+void prefix16_23(ipaddr *__IP_addrv4);
+void prefix8_15(ipaddr *__IP_addrv4);
 
 #endif
