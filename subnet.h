@@ -11,6 +11,7 @@
 #define SHORT_ARG_B "-cB"
 #define LONG_ARG_A "--classA"
 #define SHORT_ARG_A "-cA"
+#define LINE puts("=============================================");
 
 typedef struct __IPv4 {
 	int octet[0x04];
@@ -23,9 +24,7 @@ typedef struct __obj {
 	int mask;
 } object;
 
-void line();
-void error();
-
+void moveBuffer(char *buff, ipaddr *__IP_addrv4);
 void prefix24_30(ipaddr *__IP_addrv4);
 void prefix16_23(ipaddr *__IP_addrv4);
 void prefix8_15(ipaddr *__IP_addrv4);
