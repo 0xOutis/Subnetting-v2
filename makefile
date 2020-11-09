@@ -1,9 +1,10 @@
 CC = gcc
 CFLAGS = -c
-CFLAGSS = -lm
+LMFLAGS = -lm
+OUTPUT = -o
 
 subnet : main.o subnet.o
-	$(CC) main.o subnet.o -o subnet $(CFLAGSS)
+	$(CC) main.o subnet.o $(OUTPUT) subnet $(LMFLAGS)
 
 main.o : main.c
 	$(CC) $(CFLAGS) main.c
