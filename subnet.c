@@ -22,7 +22,7 @@ void help() {
 	puts("IP address Class A: ./subnet 10.10.1.1/8 --classA");
 }
 
-void moveBuffer(char *buffer, ipaddr_t *ip) {
+void moveBuffer(void *buffer, ipaddr_t *ip) {
 	char *address = (char*)malloc(0x20*sizeof(char));
         strcpy(address, buffer);
         char tmp[0x3];
