@@ -32,7 +32,7 @@ typedef struct{
 
 void help();
 
-void moveBuffer(char *buff, ipaddr_t *__IP_addrv4);
+void moveBuffer(void *buff, ipaddr_t *__IP_addrv4);
 void prefix24_30(ipaddr_t *__IP_addrv4);
 void prefix16_23(ipaddr_t *__IP_addrv4);
 void prefix8_15(ipaddr_t *__IP_addrv4);
