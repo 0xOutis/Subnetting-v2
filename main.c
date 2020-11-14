@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
 
 	if (argc < 0x3) {
 		LOG_ERROR("Error, Example: %s [ipaddr/prefix] -[options]\n", argv[0x0]);
-		error();
+		menu();
 		return 0x1;
 	}
 
@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
 			prefix24_30(addr);
 		else {
 			LOG_ERROR("Error, Examples: %s [ipaddr/prefix] -[options]\n", argv[0x0]);
-			error();
+			menu();
 			free(addr);
 			return 0x1;
 		}
@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
 			prefix16_23(addr);
 		else {
 			LOG_ERROR("Error, Example: %s [ipaddr/prefix] -[option]\n", argv[0x0]);
-			error();
+			menu();
 			free(addr);
 			return 0x1;
 		}
@@ -76,13 +76,13 @@ int main(int argc, char **argv) {
 			prefix8_15(addr);
 		else {
 			LOG_ERROR("Error, Example: %s [ipaddr/prefix] -[option]\n", argv[0x0]);
-			error();
+			menu();
 			free(addr);
 			return 0x1;
 		}
 	} else {
 		LOG_ERROR("Error, Example: %s [ipaddr/prefix] -[option]\n", argv[0x0]);
-		error();
+		menu();
 	}
 
 	free(addr);
