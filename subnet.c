@@ -67,7 +67,7 @@ void prefix24_30(ipaddr_t *ip) {
 		broadcast = network - 0x1;
 		printf("  -\t%d.%d.%d."BOLDRED"%d\t"WHT"->[%d]\n", ip->octet[0x0], ip->octet[0x1], ip->octet[0x2], broadcast, numbers);
 		numbers++;
-	} while(network <=0xff);
+	} while(network <= 0xff);
 	LINE
 }
 
