@@ -29,7 +29,7 @@ typedef struct{
 	int mask;
 } object_t;
 
-void error();
+void help();
 
 void prefix24_30(ipaddr_t *__IP_addrv4);
 void prefix16_23(ipaddr_t *__IP_addrv4);
