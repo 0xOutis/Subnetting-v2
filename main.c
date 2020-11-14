@@ -9,53 +9,65 @@
 #include <string.h>
 #include "subnet.h"
 
-void examples() {
-	puts("Options: ");
-	puts("\t# Long argument [--classC] or Short argument [-cC]");
-	puts("\t\tPrefix: [24 - 30]");
-	puts("\t# Long argument [--classB] or Short argument [-cB]");
-	puts("\t\tPrefix: [16 - 23] [24 - 30]");
-	puts("\t# Long argument [--classA] or Short argument [-cA]");
-	puts("\t\tPrefix: [8 - 15] [16 - 23] [24 - 30]");
-	puts("Examples:");
-	puts("IP address Class C: ./subnet 192.168.10.1/24 --classC");
-	puts("IP address Class B: ./subnet 172.16.10.22/16 --classB");
-	puts("IP address Class A: ./subnet 10.10.1.1/8 --classA");
-}
 
 int main(int argc, char **argv) {
 
-	if (argc < 3) {
-		printf("Error, Example: %s [ip_addr]/[prefix] -[option]\n", argv[0]);
-		examples();
-		return EXIT_FAILURE;
+	if (argc < 0x3) {
+		LOG_ERROR("Error, Example: %s [ipaddr/prefix] -[options]\n", argv[0x0]);
+		error();
+		return 0x1;
 	}
 
-	ipaddr *addr = (ipaddr*)malloc(sizeof(ipaddr));
-	moveBuffer(argv[1], addr);
+	char address[0x1c];
+	strcpy(address, argv[0x1]);
+	char *tmp = (char*)malloc(0x3*sizeof(char));
+	ipaddr_t *addr = (ipaddr_t*)malloc(sizeof(ipaddr_t));
+	int y=0x0, x=0x0;
 
-	if ((strcmp(argv[2], LONG_ARG_C) == 0) || (strcmp(argv[2], SHORT_ARG_C) == 0)){
+	for (int i=0x0;i<strlen(address);i++) {
+		if ((address[i] != __DOT_) && (address[i] != __PREFIX_)) {
+			tmp[x] = address[i];
+			x++;
+		}
+		else if ((address[i] == __DOT_) || (address[i] == __PREFIX_)) {
+			addr->octet[y] = atoi(tmp);
+			memset(tmp,0x00,sizeof(&tmp));
+			x=0x0;
+			y++;
+			if (address[i] == __PREFIX_) {
+				for (int j=(i+0x1);j<=strlen(address);j++) {
+					tmp[x] = address[j];
+					x++;
+				}
+				addr->prefix = atoi(tmp);
+				free(tmp);
+				break;
+			}
+		}
+	}
+
+	if ((strcmp(argv[0x2], LONG_ARG_C) == 0x0) || (strcmp(argv[0x2], SHORT_ARG_C) == 0x0)){
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
 			prefix24_30(addr);
 		else {
-			printf("Error, Example: %s [ip_addr]/[prefix] -[option]\n", argv[0]);
-			examples();
+			LOG_ERROR("Error, Examples: %s [ipaddr/prefix] -[options]\n", argv[0x0]);
+			error();
 			free(addr);
-			return EXIT_FAILURE;
+			return 0x1;
 		}
-	} else if ((strcmp(argv[2], LONG_ARG_B) == 0) || (strcmp(argv[2], SHORT_ARG_B) == 0)){
+	} else if ((strcmp(argv[0x2], LONG_ARG_B) == 0x0) || (strcmp(argv[0x2], SHORT_ARG_B) == 0x0)){
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
 			prefix24_30(addr);
 		else if (addr->prefix <= 0x17 && addr->prefix >= 0x10)
 			prefix16_23(addr);
 		else {
-			printf("Error, Example: %s [ip_addr]/[prefix] -[option]\n", argv[0x00]);
-			examples();
+			LOG_ERROR("Error, Example: %s [ipaddr/prefix] -[option]\n", argv[0x0]);
+			error();
 			free(addr);
-			return EXIT_FAILURE;
+			return 0x1;
 		}
 		
-	} else if ((strcmp(argv[2], LONG_ARG_A) == 0) || (strcmp(argv[2], SHORT_ARG_A) == 0)){
+	} else if ((strcmp(argv[0x2], LONG_ARG_A) == 0x0) || (strcmp(argv[0x2], SHORT_ARG_A) == 0x0)){
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
 			prefix24_30(addr);
 		else if (addr->prefix <= 0x17 && addr->prefix >= 0x10)
@@ -63,16 +75,16 @@ int main(int argc, char **argv) {
 		else if (addr->prefix <= 0x0f && addr->prefix >=0x08)
 			prefix8_15(addr);
 		else {
-			printf("Error, Example: %s [ip_addr]/[prefix] -[option]\n", argv[0]);
-			examples();
+			LOG_ERROR("Error, Example: %s [ipaddr/prefix] -[option]\n", argv[0x0]);
+			error();
 			free(addr);
-			return EXIT_FAILURE;
+			return 0x1;
 		}
 	} else {
-		printf("Error, Example: %s [ip_addr]/[prefix] -[option]\n", argv[0]);
-		examples();
+		LOG_ERROR("Error, Example: %s [ipaddr/prefix] -[option]\n", argv[0x0]);
+		error();
 	}
 
 	free(addr);
-	return EXIT_SUCCESS;
+	return 0x0;
 }
