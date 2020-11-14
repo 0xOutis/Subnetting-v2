@@ -29,7 +29,9 @@ void moveBuffer(void *buffer, ipaddr_t *ip) {
         int y=0, x=0;
 
         for (int i=0;i<strlen(address);i++) {
-                if ((address[i] != __DOT_) && (address[i] != __PREFIX_)) {                                                                                          tmp[x] = address[i];                                                  x++;
+                if ((address[i] != __DOT_) && (address[i] != __PREFIX_)) {
+			tmp[x] = address[i];
+			x++;
                 }
                 else if ((address[i] == __DOT_) || (address[i] == __PREFIX_)) {                                                                                     ip->octet[y] = atoi(tmp);
                         memset(tmp,0x00,sizeof(tmp));
