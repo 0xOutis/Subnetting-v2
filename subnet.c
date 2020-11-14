@@ -23,7 +23,7 @@ void help() {
 }
 
 void moveBuffer(char *buffer, ipaddr_t *ip) {
-	char *address = (char*)malloc(0x40*sizeof(char));
+	char *address = (char*)malloc(0x20*sizeof(char));
         strcpy(address, buffer);
         char tmp[0x3];
         int y=0x0, x=0x0;
