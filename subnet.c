@@ -7,7 +7,7 @@ int host;
 int network=0x0,broadcast=0x0;
 int numbers=0x1;
 
-void error() {
+void help() {
 	puts("Options: ");
 	puts("\t#--classC or -cC");
 	puts("\t\tPrefix: 24 - 30");
