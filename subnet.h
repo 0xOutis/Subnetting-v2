@@ -18,13 +18,13 @@
 #define LINE puts("=============================================");
 
 typedef struct{
-	int grade[0x2];
-	int subnet[0x2];
+	int grade[2];
+	int subnet[2];
 	int mask;
 } object_t;
 
 typedef struct{
-	int octet[0x4];
+	int octet[4];
 	int prefix;
 	object_t object;
 } ipaddr_t;
