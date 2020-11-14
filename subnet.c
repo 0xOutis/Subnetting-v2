@@ -21,6 +21,32 @@ void help() {
 	puts("IP address Class A: ./subnet 10.10.1.1/8 --classA");
 }
 
+void moveBuffer(char *buffer, ipaddr_t *ip) {
+	char *address = (char*)malloc(0x40*sizeof(char));
+        strcpy(address, buffer);
+        char tmp[0x3];
+        int y=0x0, x=0x0;
+
+        for (int i=0x0;i<strlen(address);i++) {
+                if ((address[i] != __DOT_) && (address[i] != __PREFIX_)) {                                                                                          tmp[x] = address[i];                                                  x++;
+                }
+                else if ((address[i] == __DOT_) || (address[i] == __PREFIX_)) {                                                                                     ip->octet[y] = atoi(tmp);
+                        memset(tmp,0x00,sizeof(tmp));
+                        x=0x0;
+                        y++;
+                        if (address[i] == __PREFIX_) {
+                                for (int j=(i+0x1);j<=strlen(address);j++) {
+                                        tmp[x] = address[j];
+                                        x++;
+                                }
+                                ip->prefix = atoi(tmp);
+                                free(address);
+                                break;
+                        }
+                }
+        }	
+}
+
 void prefix24_30(ipaddr_t *ip) {
 	object_t obj;
 

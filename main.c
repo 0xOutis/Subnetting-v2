@@ -18,34 +18,9 @@ int main(int argc, char **argv) {
 		return 0x1;
 	}
 
-	char address[0x1c];
-	strcpy(address, argv[0x1]);
-	char *tmp = (char*)malloc(0x3*sizeof(char));
 	ipaddr_t *addr = (ipaddr_t*)malloc(sizeof(ipaddr_t));
-	int y=0x0, x=0x0;
-
-	for (int i=0x0;i<strlen(address);i++) {
-		if ((address[i] != __DOT_) && (address[i] != __PREFIX_)) {
-			tmp[x] = address[i];
-			x++;
-		}
-		else if ((address[i] == __DOT_) || (address[i] == __PREFIX_)) {
-			addr->octet[y] = atoi(tmp);
-			memset(tmp,0x00,sizeof(&tmp));
-			x=0x0;
-			y++;
-			if (address[i] == __PREFIX_) {
-				for (int j=(i+0x1);j<=strlen(address);j++) {
-					tmp[x] = address[j];
-					x++;
-				}
-				addr->prefix = atoi(tmp);
-				free(tmp);
-				break;
-			}
-		}
-	}
-
+	moveBuffer(argv[0x1], addr);
+	
 	if ((strcmp(argv[0x2], LONG_ARG_C) == 0x0) || (strcmp(argv[0x2], SHORT_ARG_C) == 0x0)){
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
 			prefix24_30(addr);
