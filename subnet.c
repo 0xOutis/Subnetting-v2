@@ -36,7 +36,7 @@ void moveBuffer(void *buffer, ipaddr_t *ip) {
                 else if ((address[i] == __DOT_) || (address[i] == __PREFIX_)) {
 			ip->octet[y] = atoi(tmp);
                         memset(tmp,CLEAN_BUFFER,sizeof(tmp));
-                        x=0;
+                        x=CLEAN_BUFFER;
                         y++;
                         if (address[i] == __PREFIX_) {
                                 for (int j=(i+1);j<=strlen(address);j++) {
