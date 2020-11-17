@@ -16,6 +16,7 @@
 #define LONG_ARG_A "--classA"
 #define SHORT_ARG_A "-cA"
 #define LINE puts("=============================================");
+#define CLEAN_BUFFER 0x00
 
 typedef struct{
 	int grade[2];
