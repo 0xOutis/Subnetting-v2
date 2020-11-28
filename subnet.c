@@ -8,20 +8,6 @@ int host;
 int network=0,broadcast=0;
 int numbers=1;
 
-void help() {
-	puts("Options: ");
-	puts("\t#--classC or -cC");
-	puts("\t\tPrefix: 24 - 30");
-	puts("\t#--classB or -cB");
-	puts("\t\tPrefix: 16 - 23, 24 - 30");
-	puts("\t#--classA or -cA");
-	puts("\t\tPrefix: 8 - 15, 16 - 23, 24 - 30");
-	puts("Examples:");
-	puts("IP address Class C: ./subnet 192.168.10.1/24 --classC");
-	puts("IP address Class B: ./subnet 172.16.10.22/16 --classB");
-	puts("IP address Class A: ./subnet 10.10.1.1/8 --classA");
-}
-
 void moveBuffer(void *buffer, ipaddr_t *ip) {
 	char *address = (char*)malloc(32*sizeof(char));
         strcpy(address, buffer);
