@@ -7,8 +7,8 @@
 
 #define BOLDRED "\x1B[1m\033[31m"
 #define WHT "\033[37m"
-#define __DOT_ '.'
-#define __PREFIX_ '/'
+#define __DOT__ '.'
+#define __PREFIX__ '/'
 #define LONG_ARG_C "--classC"
 #define SHORT_ARG_C "-cC"
 #define LONG_ARG_B "--classB"
