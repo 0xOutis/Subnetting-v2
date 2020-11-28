@@ -18,6 +18,13 @@
 #define LINE puts("=============================================");
 #define CLEAN_BUFFER 0x00
 
+#define RANGE_CLASS_C_24 prefix24_30
+#define RANGE_CLASS_B_24 prefix24_30
+#define RANGE_CLASS_B_16 prefix16_23
+#define RANGE_CLASS_A_24 prefix24_30
+#define RANGE_CLASS_A_16 prefix16_23
+#define RANGE_CLASS_A_8 prefix8_15
+
 typedef struct{
 	int grade[2];
 	int subnet[2];
