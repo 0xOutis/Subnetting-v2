@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
 	if ((strcmp(argv[2], LONG_ARG_C) == 0) || (strcmp(argv[2], SHORT_ARG_C) == 0)){
 		/* for Prefix range 24-30 */
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
-			RANGE_CLASS_C_24(addr);
+			CLASS_C_RANGE24(addr);
 		else {
 			LOG_ERROR("Error, Examples: %s [ipaddr/prefix] [options]\n", argv[0]);
 			help();
@@ -36,10 +36,10 @@ int main(int argc, char **argv) {
 	} else if ((strcmp(argv[2], LONG_ARG_B) == 0) || (strcmp(argv[2], SHORT_ARG_B) == 0)){
 		/* for Prefix range 24-30 */
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
-			RANGE_CLASS_B_24(addr);
+			CLASS_B_RANGE24(addr);
 	        /* for Prefix range 16-23 */	
 		else if (addr->prefix <= 0x17 && addr->prefix >= 0x10)
-			RANGE_CLASS_B_16(addr);
+			CLASS_B_RANGE16(addr);
 		else {
 			LOG_ERROR("Error, Example: %s [ipaddr/prefix] [option]\n", argv[0]);
 			help();
@@ -50,13 +50,13 @@ int main(int argc, char **argv) {
 	} else if ((strcmp(argv[2], LONG_ARG_A) == 0) || (strcmp(argv[2], SHORT_ARG_A) == 0)){
 		/* for Prefix range 24-30 */
 		if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
-			RANGE_CLASS_A_24(addr);
+			CLASS_A_RANGE24(addr);
 		/* for Prefix range 16-23 */
 		else if (addr->prefix <= 0x17 && addr->prefix >= 0x10)
-			RANGE_CLASS_A_16(addr);
+			CLASS_A_RANGE16(addr);
 		/* for Prefix range 8-15 */
 		else if (addr->prefix <= 0x0f && addr->prefix >= 0x08)
-			RANGE_CLASS_A_8(addr);
+			CLASS_A_RANGE8(addr);
 		else {
 			LOG_ERROR("Error, Example: %s [ipaddr/prefix] [option]\n", argv[0]);
 			help();
