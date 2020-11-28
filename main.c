@@ -24,9 +24,9 @@ int main(int argc, char **argv) {
 			  "\tIp class B = 16-30\n"
 			  "\tIp class A = 8-30\n\n"
 			  "Examples:\n"
-			  "\tfor class C = %s 192.168.10.1/24\n"
-			  "\tfor class B = %s 172.16.10.22/18\n"
-		          "\tfor class A = %s 10.10.1.1/12\n", 
+			  "\tFor class C = %s 192.168.10.1/24\n"
+			  "\tFor class B = %s 172.16.10.22/18\n"
+		          "\tFor class A = %s 10.10.1.1/12\n", 
 			  argv[0], argv[0], argv[0], argv[0]);
 		return 0x1;
 	}
