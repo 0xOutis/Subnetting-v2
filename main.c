@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
 	}
 
 	ipaddr_t *addr = (ipaddr_t*)malloc(sizeof(ipaddr_t));
-	moveBuffer(argv[1], addr); /* Move argv[1] to struct ipaddr_t*/
+	moveBuffer(argv[1], addr);
 	
 	/* IP class C */
 	if ((strcmp(argv[2], LONG_ARG_C) == 0) || (strcmp(argv[2], SHORT_ARG_C) == 0)){
