@@ -65,10 +65,10 @@ void prefix24_30(ipaddr_t *ip) {
 	LINE
 	printf(" Network\t\t Broadcast\n");
 	do {
-		printf("%d.%d.%d."BOLDRED"%d\t"WHT, ip->octet[0], ip->octet[1], ip->octet[2], network);
+		printf("%d.%d.%d.%d\t", ip->octet[0], ip->octet[1], ip->octet[2], network);
 		network += ip->object.subnet[0];
 		broadcast = network - 1;
-		printf("  -\t%d.%d.%d."BOLDRED"%d\t"WHT"->[%d]\n", ip->octet[0], ip->octet[1], ip->octet[2], broadcast, numbers);
+		printf("  -\t%d.%d.%d.%d\t->[%d]\n", ip->octet[0], ip->octet[1], ip->octet[2], broadcast, numbers);
 		numbers++;
 	} while(network <= 0xff);
 	LINE
@@ -90,10 +90,10 @@ void prefix16_23(ipaddr_t *ip) {
 	LINE
 	printf(" Network\t\t Broadcast\n");
 	do {
-		printf("%d.%d."BOLDRED"%d.%d\t"WHT, ip->octet[0], ip->octet[1], network, 0x00);
+		printf("%d.%d.%d.%d\t", ip->octet[0], ip->octet[1], network, 0x00);
 		network += ip->object.subnet[1];
 		broadcast = network - 1;
-		printf("  -\t%d.%d."BOLDRED"%d.%d\t"WHT"->[%d]\n", ip->octet[0], ip->octet[1], broadcast, 0xff, numbers);
+		printf("  -\t%d.%d.%d.%d\t->[%d]\n", ip->octet[0], ip->octet[1], broadcast, 0xff, numbers);
 		numbers++;
 	} while(network <= 0xff);
 	LINE
@@ -115,10 +115,10 @@ void prefix8_15(ipaddr_t *ip) {
 	LINE
 	printf(" Network\t\t Broadcast\n");
 	do {
-		printf("%d."BOLDRED"%d.%d.%d\t"WHT, ip->octet[0], network, 0x00, 0x00);
+		printf("%d.%d.%d.%d\t", ip->octet[0], network, 0x00, 0x00);
 		network += ip->object.subnet[0x1];
 		broadcast = network - 1;
-		printf(" -\t%d."BOLDRED"%d.%d.%d\t"WHT"->[%d]\n", ip->octet[0], broadcast, 0xff, 0xff, numbers);
+		printf(" -\t%d.%d.%d.%d\t->[%d]\n", ip->octet[0], broadcast, 0xff, 0xff, numbers);
 		numbers++;
 	} while(network <= 0xff);
 	LINE

@@ -5,8 +5,6 @@
 #define LOG_ERROR(format, ...) \
 	fprintf(stderr, format, __VA_ARGS__)
 
-#define BOLDRED "\x1B[1m\033[31m"
-#define WHT "\033[37m"
 #define __DOT__ '.'
 #define __PREFIX__ '/'
 #define LONG_ARG_C "--classC"
