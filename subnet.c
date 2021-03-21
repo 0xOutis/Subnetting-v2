@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <math.h>
 #include "subnet.h"
 
 int host;
@@ -22,7 +21,7 @@ void moveBuffer(void *buffer, ipaddr_t *ip) {
                 else if ((address[i] == __DOT__) || (address[i] == __PREFIX__)) {
 			ip->octet[y] = atoi(tmp);
                         memset(tmp,CLEAN_BUFFER,sizeof(tmp));
-                        x=CLEAN_BUFFER;
+                        x=0;
                         y++;
                         if (address[i] == __PREFIX__) {
                                 for (int j=(i+1);j<=strlen(address);j++) {
@@ -40,7 +39,7 @@ void moveBuffer(void *buffer, ipaddr_t *ip) {
 void prefix24_30(ipaddr_t *ip) {
 
 	ip->object.grade[0] = 32 - ip->prefix;
-	ip->object.subnet[0] = pow (2, ip->object.grade[0]);
+	ip->object.subnet[0] = POWER(ip->object.grade[0]);
 	ip->object.mask = 256 - ip->object.subnet[0];
 
 	printf("IP Address: %d.%d.%d.%d\n", ip->octet[0], ip->octet[1], ip->octet[2], ip->octet[3]);
@@ -48,7 +47,7 @@ void prefix24_30(ipaddr_t *ip) {
 	host = ip->object.subnet[0] - 2;
 	printf("Host available: %d\n", host);
 
-	LINE
+	puts("=============================================");
 	printf(" Network\t\t Broadcast\n");
 	do {
 		printf("%d.%d.%d.%d\t", ip->octet[0], ip->octet[1], ip->octet[2], network);
@@ -57,15 +56,15 @@ void prefix24_30(ipaddr_t *ip) {
 		printf("  -\t%d.%d.%d.%d\t->[%d]\n", ip->octet[0], ip->octet[1], ip->octet[2], broadcast, numbers);
 		numbers++;
 	} while(network <= 0xff);
-	LINE
+	puts("=============================================");
 }
 
 void prefix16_23(ipaddr_t *ip) {
 
 	ip->object.grade[0] = 32 - ip->prefix;
 	ip->object.grade[1] = 24 - ip->prefix;
-	ip->object.subnet[0] = pow (2, ip->object.grade[0]);
-	ip->object.subnet[1] = pow (2, ip->object.grade[1]);
+	ip->object.subnet[0] = POWER(ip->object.grade[0]);
+	ip->object.subnet[1] = POWER(ip->object.grade[1]);
 	ip->object.mask = 256 - ip->object.subnet[1];
 
 	printf("IP Address: %d.%d.%d.%d\n", ip->octet[0], ip->octet[1], ip->octet[2], ip->octet[3]);
@@ -73,7 +72,7 @@ void prefix16_23(ipaddr_t *ip) {
 	host = ip->object.subnet[0] - 2;
 	printf("Host available: %d\n", host);
 
-	LINE
+	puts("============================================");
 	printf(" Network\t\t Broadcast\n");
 	do {
 		printf("%d.%d.%d.%d\t", ip->octet[0], ip->octet[1], network, 0x00);
@@ -82,15 +81,15 @@ void prefix16_23(ipaddr_t *ip) {
 		printf("  -\t%d.%d.%d.%d\t->[%d]\n", ip->octet[0], ip->octet[1], broadcast, 0xff, numbers);
 		numbers++;
 	} while(network <= 0xff);
-	LINE
+	puts("============================================");
 }
 
 void prefix8_15(ipaddr_t *ip) {
 
 	ip->object.grade[0] = 32 - ip->prefix;
 	ip->object.grade[1] = 16 - ip->prefix;
-	ip->object.subnet[0] = pow (2, ip->object.grade[0]);
-	ip->object.subnet[1] = pow (2, ip->object.grade[1]);
+	ip->object.subnet[0] = POWER(ip->object.grade[0]);
+	ip->object.subnet[1] = POWER(ip->object.grade[1]);
 	ip->object.mask = 256 - ip->object.subnet[1];
 
 	printf("IP Address: %d.%d.%d.%d\n", ip->octet[0], ip->octet[1], ip->octet[2], ip->octet[3]);
@@ -98,7 +97,7 @@ void prefix8_15(ipaddr_t *ip) {
 	host = ip->object.subnet[0] - 2;
 	printf("Host available: %d\n", host);
 
-	LINE
+	puts("============================================");
 	printf(" Network\t\t Broadcast\n");
 	do {
 		printf("%d.%d.%d.%d\t", ip->octet[0], network, 0x00, 0x00);
@@ -107,5 +106,5 @@ void prefix8_15(ipaddr_t *ip) {
 		printf(" -\t%d.%d.%d.%d\t->[%d]\n", ip->octet[0], broadcast, 0xff, 0xff, numbers);
 		numbers++;
 	} while(network <= 0xff);
-	LINE
+	puts("============================================");
 }

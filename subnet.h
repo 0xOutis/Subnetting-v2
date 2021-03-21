@@ -5,9 +5,10 @@
 #define LOG_ERROR(format, ...) \
 	fprintf(stderr, format, __VA_ARGS__)
 
+#define POWER(x) (2 << (x - 1))
+
 #define __DOT__ '.'
 #define __PREFIX__ '/'
-#define LINE puts("=============================================");
 #define CLEAN_BUFFER 0x00
 #define RANGE24 prefix24_30
 #define RANGE16 prefix16_23

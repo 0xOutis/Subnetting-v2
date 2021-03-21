@@ -6,7 +6,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "subnet.h" /* The header file contains */
 		    /* the subnetting function declaration */
 
@@ -35,13 +34,13 @@ int main(int argc, char **argv) {
 	moveBuffer(argv[1], addr);
 	
 	/* for Prefix range 24-30 */
-	if (addr->prefix <= 0x1e && addr->prefix >= 0x18)
+	if ((addr->prefix <= 0x1e) && (addr->prefix >= 0x18))
 		RANGE24(addr);
 	/* for Prefix range 16-23 */	
-	else if (addr->prefix <= 0x17 && addr->prefix >= 0x10)
+	else if ((addr->prefix <= 0x17) && (addr->prefix >= 0x10))
 		RANGE16(addr);
 	/* for Prefix range 8-15 */
-	else if (addr->prefix <= 0x0f && addr->prefix >= 0x08)
+	else if ((addr->prefix <= 0x0f) && (addr->prefix >= 0x08))
 		RANGE8(addr);
 	else
 		goto note;
