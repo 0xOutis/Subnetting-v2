@@ -11,7 +11,7 @@
 
 int main(int argc, char **argv) {
 
-	if (argc < 2 || argc > 2) {
+	if ((argc < 2) || (argc > 2)) {
 		note:	
 		LOG_ERROR("Error, Example: %s [ipaddr/prefix]\n\n"
 			  "Note:\n"
@@ -27,24 +27,21 @@ int main(int argc, char **argv) {
 			  "\tFor class B = %s 172.16.10.22/18\n"
 		          "\tFor class A = %s 10.10.1.1/12\n", 
 			  argv[0], argv[0], argv[0], argv[0]);
-		return 0x1;
+		return -1;
 	}
 
 	ipaddr_t *addr = (ipaddr_t*)malloc(sizeof(ipaddr_t));
 	moveBuffer(argv[1], addr);
 	
-	/* for Prefix range 24-30 */
-	if ((addr->prefix <= 0x1e) && (addr->prefix >= 0x18))
+	if ((addr->prefix <= 24) && (addr->prefix >= 30))
 		RANGE24(addr);
-	/* for Prefix range 16-23 */	
-	else if ((addr->prefix <= 0x17) && (addr->prefix >= 0x10))
+	else if ((addr->prefix <= 16) && (addr->prefix >= 23))
 		RANGE16(addr);
-	/* for Prefix range 8-15 */
-	else if ((addr->prefix <= 0x0f) && (addr->prefix >= 0x08))
+	else if ((addr->prefix <= 8) && (addr->prefix >= 15))
 		RANGE8(addr);
 	else
 		goto note;
 
 	free(addr);
-	return 0x0;
+	return 0;
 }
