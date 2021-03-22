@@ -5,8 +5,6 @@
 #define LOG_ERROR(format, ...) \
 	fprintf(stderr, format, __VA_ARGS__)
 
-#define POWER(x) (2 << (x - 1))
-
 #define __DOT__ '.'
 #define __PREFIX__ '/'
 #define CLEAN_BUFFER 0x00
@@ -25,6 +23,8 @@ typedef struct{
 	int prefix;
 	object_t object;
 } ipaddr_t;
+
+#define POWER(x) (2 << (x - 1))
 
 void moveBuffer(void *buff, ipaddr_t *__IP_addrv4);
 void prefix24_30(ipaddr_t *__IP_addrv4);
